@@ -1,0 +1,64 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Color {
+  _id: String!
+
+  """Name"""
+  name: String!
+
+  """Active"""
+  active: Boolean!
+
+  """Date register"""
+  date_register: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  getHello: String!
+  colorspage(listColorInput: ListInput!): [Color!]!
+  color(_id: String!): Color!
+}
+
+input ListInput {
+  """Limit pagination"""
+  limit: Float!
+
+  """Offset pagination"""
+  offset: Float!
+}
+
+type Mutation {
+  createColor(data: CreateColorInput!): Color!
+  updateColor(data: UpdateColorInput!): Color!
+  removeColor(_id: String!): Color!
+}
+
+input CreateColorInput {
+  """Name"""
+  name: String!
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+}
+
+input UpdateColorInput {
+  """Name"""
+  name: String
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+  _id: String!
+}
