@@ -13,13 +13,14 @@ export class ColorService {
     async getAllPage(pagination: ListInput) {
         const { limit, offset } = pagination;
 
-        return await this.model.find().skip(offset).limit(limit).exec()
+        //return await this.model.find().skip(offset).limit(limit).exec()
         const results = await this.model.find().skip(offset).limit(limit).exec()
         const count = await this.model.countDocuments()
 
-        return Object.assign(results, {
+        return {
+            results,
             count
-        })
+        }
     }
 
     async getById(id: string) {

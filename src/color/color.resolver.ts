@@ -4,6 +4,7 @@ import { ListInput } from '../common/list.input';
 import { UpdateColorInput } from './dto/update-color.input';
 import { Color } from './schemas/color.schema';
 import { ColorService } from './color.service';
+import { ColorPagination } from './schemas/color.pagination';
 
 @Resolver(() => Color)
 export class ColorResolver {
@@ -14,7 +15,7 @@ export class ColorResolver {
         return this.service.create(input);
     }
 
-    @Query(() => [Color], { name: 'colorspage' })
+    @Query(() => ColorPagination, { name: 'colorspage' })
     findAllPage(@Args('listColorInput') listColorInput: ListInput) {
         return this.service.getAllPage(listColorInput)
         
