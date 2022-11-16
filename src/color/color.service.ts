@@ -10,10 +10,15 @@ import { Color } from './schemas/color.schema';
 export class ColorService {
     constructor(@InjectModel('Color') private readonly model: Model<Color>){ }
 
+    async getAllReport() {
+        const results = await this.model.find()
+        
+        return results
+    }
+
     async getAllPage(pagination: ListInput) {
         const { limit, offset } = pagination;
 
-        //return await this.model.find().skip(offset).limit(limit).exec()
         const results = await this.model.find().skip(offset).limit(limit).exec()
         const count = await this.model.countDocuments()
 

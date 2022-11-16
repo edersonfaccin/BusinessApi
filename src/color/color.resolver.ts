@@ -15,10 +15,14 @@ export class ColorResolver {
         return this.service.create(input);
     }
 
+    @Query(() => [Color], { name: 'colors' })
+    findAllReport() {
+        return this.service.getAllReport()
+    }
+
     @Query(() => ColorPagination, { name: 'colorspage' })
     findAllPage(@Args('listColorInput') listColorInput: ListInput) {
         return this.service.getAllPage(listColorInput)
-        
     }
 
     @Query(() => Color, { name: 'color' })
