@@ -2,11 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Color {
+type User {
   _id: String!
 
-  """Name"""
+  """Nome"""
   name: String!
+
+  """Email"""
+  email: String!
+
+  """Senha"""
+  password: String!
 
   """Active"""
   active: Boolean!
@@ -20,6 +26,19 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Color {
+  _id: String!
+
+  """Name"""
+  name: String!
+
+  """Active"""
+  active: Boolean!
+
+  """Date register"""
+  date_register: DateTime!
+}
+
 type ColorPagination {
   results: [Color!]!
 
@@ -32,6 +51,7 @@ type Query {
   colors: [Color!]!
   colorspage(listColorInput: ListInput!): ColorPagination!
   color(_id: String!): Color!
+  user(_id: String!): User!
 }
 
 input ListInput {
@@ -46,6 +66,10 @@ type Mutation {
   createColor(data: CreateColorInput!): Color!
   updateColor(data: UpdateColorInput!): Color!
   removeColor(_id: String!): Color!
+  createUser(data: CreateUserInput!): User!
+  login(data: AuthUserInput!): User!
+  updateUser(data: UpdateUserInput!): User!
+  removeUser(_id: String!): User!
 }
 
 input CreateColorInput {
@@ -62,6 +86,49 @@ input CreateColorInput {
 input UpdateColorInput {
   """Name"""
   name: String
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+  _id: String!
+}
+
+input CreateUserInput {
+  """Name"""
+  name: String!
+
+  """Email"""
+  email: String!
+
+  """Senha"""
+  password: String!
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+}
+
+input AuthUserInput {
+  """Email"""
+  email: String!
+
+  """Senha"""
+  password: String!
+}
+
+input UpdateUserInput {
+  """Name"""
+  name: String
+
+  """Email"""
+  email: String
+
+  """Senha"""
+  password: String
 
   """Active"""
   active: Boolean

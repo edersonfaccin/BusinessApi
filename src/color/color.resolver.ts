@@ -5,11 +5,14 @@ import { UpdateColorInput } from './dto/update-color.input';
 import { Color } from './schemas/color.schema';
 import { ColorService } from './color.service';
 import { ColorPagination } from './schemas/color.pagination';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuard } from 'src/auth/guards/gql-guard';
 
 @Resolver(() => Color)
 export class ColorResolver {
     constructor(private readonly service: ColorService) {}
 
+    //@UseGuards(GqlAuthGuard)
     @Mutation(() => Color)
     createColor(@Args('data') input: CreateColorInput) {
         return this.service.create(input);
