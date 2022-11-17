@@ -6,7 +6,10 @@ import { AppController } from './app.controller';
 import { AppResolver } from './app.resolver';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { CategoryModule } from './category/category.module';
 import { ColorModule } from './color/color.module';
+import { GroupModule } from './group/group.module';
+import { UnitModule } from './unit/unit.module';
 import { UserModule } from './user/user.module';
 
 require('dotenv').config()
@@ -20,7 +23,10 @@ require('dotenv').config()
     }),
     ColorModule,
     AuthModule,
-    UserModule
+    UserModule,
+    UnitModule,
+    GroupModule,
+    CategoryModule
   ],
   controllers: [
     AppController
