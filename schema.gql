@@ -79,6 +79,81 @@ type ColorPagination {
   count: Float!
 }
 
+type Member {
+  _id: String!
+
+  """Member user id"""
+  iduser: String!
+
+  """Member active"""
+  active: Boolean!
+
+  """Member date register"""
+  date_register: DateTime!
+}
+
+type Company {
+  _id: String!
+
+  """Name"""
+  name: String!
+
+  """Nome fantasia"""
+  nick_name: String!
+
+  """cnpj"""
+  national_identifier: String!
+
+  """inscricao estadual"""
+  state_identifier: String!
+
+  """inscricao municipal"""
+  municipal_identifier: String!
+
+  """Endereco"""
+  address: String!
+
+  """Complemento"""
+  complement: String!
+
+  """Bairro"""
+  district: String!
+
+  """Cep"""
+  zip_code: String!
+
+  """Cidade"""
+  city: String!
+
+  """Fone"""
+  phone: String!
+
+  """Celular"""
+  cellphone: String!
+
+  """Email"""
+  email: String!
+
+  """Contato"""
+  contact: String!
+
+  """Member at this company"""
+  users: [Member!]!
+
+  """Active"""
+  active: Boolean!
+
+  """Date register"""
+  date_register: DateTime!
+}
+
+type CompanyPagination {
+  results: [Company!]!
+
+  """Count pagination"""
+  count: Float!
+}
+
 type Group {
   _id: String!
 
@@ -137,6 +212,9 @@ type Query {
   categorys: [Category!]!
   categoryspage(listCategoryInput: ListInput!): CategoryPagination!
   category(_id: String!): Category!
+  companys: [Company!]!
+  companyspage(listCompanyInput: ListInput!): CompanyPagination!
+  company(_id: String!): Company!
 }
 
 input ListInput {
@@ -164,6 +242,9 @@ type Mutation {
   createCategory(data: CreateCategoryInput!): Category!
   updateCategory(data: UpdateCategoryInput!): Category!
   removeCategory(_id: String!): Category!
+  createCompany(data: CreateCompanyInput!): Company!
+  updateCompany(data: UpdateCompanyInput!): Company!
+  removeCompany(_id: String!): Company!
 }
 
 input CreateColorInput {
@@ -298,6 +379,124 @@ input CreateCategoryInput {
 input UpdateCategoryInput {
   """Name"""
   name: String
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+  _id: String!
+}
+
+input CreateCompanyInput {
+  """Name"""
+  name: String!
+
+  """Nick Name"""
+  nick_name: String
+
+  """CNPJ"""
+  national_identifier: String
+
+  """Inscricao estadual"""
+  state_identifier: String
+
+  """Inscricao municipal"""
+  municipal_identifier: String
+
+  """Endereco"""
+  address: String
+
+  """Complemento"""
+  complement: String
+
+  """Bairro"""
+  district: String
+
+  """CEP"""
+  zip_code: String
+
+  """Cidade"""
+  city: String
+
+  """Phone"""
+  phone: String
+
+  """Celular"""
+  cellphone: String
+
+  """Email"""
+  email: String
+
+  """Contato"""
+  contact: String
+
+  """User at this company"""
+  users: [CreateMemberInput!]
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+}
+
+input CreateMemberInput {
+  """User id"""
+  iduser: String!
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+}
+
+input UpdateCompanyInput {
+  """Name"""
+  name: String
+
+  """Nick Name"""
+  nick_name: String
+
+  """CNPJ"""
+  national_identifier: String
+
+  """Inscricao estadual"""
+  state_identifier: String
+
+  """Inscricao municipal"""
+  municipal_identifier: String
+
+  """Endereco"""
+  address: String
+
+  """Complemento"""
+  complement: String
+
+  """Bairro"""
+  district: String
+
+  """CEP"""
+  zip_code: String
+
+  """Cidade"""
+  city: String
+
+  """Phone"""
+  phone: String
+
+  """Celular"""
+  cellphone: String
+
+  """Email"""
+  email: String
+
+  """Contato"""
+  contact: String
+
+  """User at this company"""
+  users: [CreateMemberInput!]
 
   """Active"""
   active: Boolean

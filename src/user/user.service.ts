@@ -55,7 +55,7 @@ export class UserService {
 
         user = data
         const salt = await bcrypt.genSalt(8)
-        user.password = await bcrypt.hash(data.password, salt)
+        user.password = bcrypt.hashSync(data.password, salt)
 
         const createdData = new this.model(user)
         return await createdData.save()

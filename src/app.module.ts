@@ -8,6 +8,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { CategoryModule } from './category/category.module';
 import { ColorModule } from './color/color.module';
+import { CompanyModule } from './company/company.module';
 import { GroupModule } from './group/group.module';
 import { UnitModule } from './unit/unit.module';
 import { UserModule } from './user/user.module';
@@ -26,7 +27,8 @@ require('dotenv').config()
     UserModule,
     UnitModule,
     GroupModule,
-    CategoryModule
+    CategoryModule,
+    CompanyModule
   ],
   controllers: [
     AppController

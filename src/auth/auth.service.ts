@@ -23,10 +23,10 @@ export class AuthService {
 
     async hashPassword(password: string): Promise<string> {
         const salt = await bcrypt.genSalt(8)
-        return await bcrypt.hash(password, salt)
+        return bcrypt.hashSync(password, salt)
     }
 
     async comparePasswords(newPassword: string, passwordHash: string): Promise<boolean>{
-        return await bcrypt.compare(newPassword, passwordHash);
+        return bcrypt.compareSync(newPassword, passwordHash);
     }
 }
