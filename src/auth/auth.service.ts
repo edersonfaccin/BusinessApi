@@ -10,12 +10,13 @@ export class AuthService {
     ) {}
 
     generateJWT(user: any): any {
-        const payload = { email: user.email, sub: user._id };
+        const payload = { email: user.email, sub: user._id.toString() };
         const token = this.jwtService.sign(payload)
 
         return {
-            _id: user._id,
-            email: user.email,
+            _id: user?._id,
+            email: user?.email,
+            name: user?.name,
             access_token: token
         };
     }

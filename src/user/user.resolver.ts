@@ -2,6 +2,7 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { AuthUserInput } from './dto/auth-user.input';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
+import { Login } from './schemas/login.schema';
 import { User } from './schemas/user.schema';
 import { UserService } from './user.service';
 
@@ -14,7 +15,7 @@ export class UserResolver {
         return this.service.create(input);
     }
 
-    @Mutation(() => User)
+    @Mutation(() => Login)
     login(@Args('data') input: AuthUserInput) {
         return this.service.login(input);
     }

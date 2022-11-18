@@ -26,6 +26,19 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Login {
+  _id: String!
+
+  """Nome"""
+  name: String!
+
+  """Email"""
+  email: String!
+
+  """Access token"""
+  access_token: String!
+}
+
 type Category {
   _id: String!
 
@@ -139,7 +152,7 @@ type Mutation {
   updateColor(data: UpdateColorInput!): Color!
   removeColor(_id: String!): Color!
   createUser(data: CreateUserInput!): User!
-  login(data: AuthUserInput!): User!
+  login(data: AuthUserInput!): Login!
   updateUser(data: UpdateUserInput!): User!
   removeUser(_id: String!): User!
   createUnit(data: CreateUnitInput!): Unit!

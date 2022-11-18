@@ -23,13 +23,18 @@ export class UserService {
         }
     }
 
-    async login(user: AuthUserInput): Promise<string>{
+    async login(user: AuthUserInput): Promise<any>{
         const resultUser = await this.validateUser(user.email, user.password)
 
         if(resultUser){
           return this.authservice.generateJWT(resultUser)
         }else{
-          return "Informations incorrectes !";          
+          return {
+            _id: '',
+            name: '',
+            email: '',
+            access_token: ''
+          }        
         }
     }
 
@@ -50,7 +55,7 @@ export class UserService {
 
         user = data
         const salt = await bcrypt.genSalt(8)
-        user.password = bcrypt.hash(data.password, salt)
+        user.password = await bcrypt.hash(data.password, salt)
 
         const createdData = new this.model(user)
         return await createdData.save()
