@@ -54,7 +54,7 @@ export class UserService {
         let user = new CreateUserInput()
 
         user = data
-        const salt = await bcrypt.genSalt(8)
+        const salt = await bcrypt.genSalt(10)
         user.password = bcrypt.hashSync(data.password, salt)
 
         const createdData = new this.model(user)
@@ -63,7 +63,7 @@ export class UserService {
 
     async update(id: string, data: UpdateUserInput) {
         const updatedData = await this.model.findById(id).exec();
-        const salt = await bcrypt.genSalt(8)
+        const salt = await bcrypt.genSalt(10)
 
         Object.keys(data).forEach((key) => {
             if(key == 'password'){
