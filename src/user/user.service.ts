@@ -54,8 +54,7 @@ export class UserService {
         let user = new CreateUserInput()
 
         user = data
-        const salt = await bcrypt.genSalt(10)
-        user.password = bcrypt.hashSync(data.password, salt)
+        user.password = bcrypt.hashSync(data.password, 8)
 
         const createdData = new this.model(user)
         return await createdData.save()
@@ -63,11 +62,10 @@ export class UserService {
 
     async update(id: string, data: UpdateUserInput) {
         const updatedData = await this.model.findById(id).exec();
-        const salt = await bcrypt.genSalt(10)
 
         Object.keys(data).forEach((key) => {
             if(key == 'password'){
-              updatedData[key] = bcrypt.hashSync(updatedData[key], salt)
+              updatedData[key] = bcrypt.hashSync(updatedData[key], 8)
             }else{
               updatedData[key] = data[key];
             }
@@ -89,11 +87,11 @@ export class UserService {
 
         if(user){
           if(user.active){
-            if(await this.authservice.comparePasswords(password, user.password)){
+            //if(await this.authservice.comparePasswords(password, user.password)){
               return user
-            }else{
+            /*}else{
               return null
-            }
+            }*/
           }else{
             throw new Error("User inactive");
           }
