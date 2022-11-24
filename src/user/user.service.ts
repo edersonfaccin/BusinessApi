@@ -7,6 +7,7 @@ import { User } from './schemas/user.schema';
 import * as bcrypt from 'bcrypt'
 import { AuthService } from '../auth/auth.service';
 import { AuthUserInput } from './dto/auth-user.input';
+import { ListInput } from 'src/common/list.input';
 
 @Injectable()
 export class UserService {
@@ -21,6 +22,24 @@ export class UserService {
         } catch (error) {
             throw new HttpException('User not found', HttpStatus.NOT_FOUND);
         }
+    }
+
+    async getAllReport() {
+      const results = await this.model.find()
+      
+      return results
+  }
+
+    async getAllPage(pagination: ListInput) {
+      const { limit, offset } = pagination;
+
+      const results = await this.model.find().skip(offset).limit(limit).exec()
+      const count = await this.model.countDocuments()
+
+      return {
+          results,
+          count
+      }
     }
 
     async login(user: AuthUserInput): Promise<any>{
@@ -87,11 +106,11 @@ export class UserService {
 
         if(user){
           if(user.active){
-            //if(await this.authservice.comparePasswords(password, user.password)){
+            if(await this.authservice.comparePasswords(password, user.password)){
               return user
-            /*}else{
+            }else{
               return null
-            }*/
+            }
           }else{
             throw new Error("User inactive");
           }

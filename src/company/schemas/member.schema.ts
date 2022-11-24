@@ -19,6 +19,10 @@ export class Member {
     @Field(() => Boolean, { description: 'Member active' })
     active: boolean;
 
+    @Prop({ required: true, default: true })
+    @Field(() => Boolean, { description: 'Member adm' })
+    adm: boolean;
+
     @Prop({ required: true, default: Date.now() })
     @Field(() => Date, { description: 'Member date register' })
     date_register: Date

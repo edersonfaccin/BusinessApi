@@ -39,6 +39,13 @@ type Login {
   access_token: String!
 }
 
+type UserPagination {
+  results: [User!]!
+
+  """Count pagination"""
+  count: Float!
+}
+
 type Category {
   _id: String!
 
@@ -54,6 +61,29 @@ type Category {
 
 type CategoryPagination {
   results: [Category!]!
+
+  """Count pagination"""
+  count: Float!
+}
+
+type City {
+  _id: String!
+
+  """Name"""
+  name: String!
+
+  """State id"""
+  idstate: String!
+
+  """Active"""
+  active: Boolean!
+
+  """Date register"""
+  date_register: DateTime!
+}
+
+type CityPagination {
+  results: [City!]!
 
   """Count pagination"""
   count: Float!
@@ -87,6 +117,9 @@ type Member {
 
   """Member active"""
   active: Boolean!
+
+  """Member adm"""
+  adm: Boolean!
 
   """Member date register"""
   date_register: DateTime!
@@ -154,6 +187,26 @@ type CompanyPagination {
   count: Float!
 }
 
+type Country {
+  _id: String!
+
+  """Name"""
+  name: String!
+
+  """Active"""
+  active: Boolean!
+
+  """Date register"""
+  date_register: DateTime!
+}
+
+type CountryPagination {
+  results: [Country!]!
+
+  """Count pagination"""
+  count: Float!
+}
+
 type Group {
   _id: String!
 
@@ -169,6 +222,32 @@ type Group {
 
 type GroupPagination {
   results: [Group!]!
+
+  """Count pagination"""
+  count: Float!
+}
+
+type State {
+  _id: String!
+
+  """Name"""
+  name: String!
+
+  """UF"""
+  uf: String!
+
+  """Country id"""
+  idcountry: String!
+
+  """Active"""
+  active: Boolean!
+
+  """Date register"""
+  date_register: DateTime!
+}
+
+type StatePagination {
+  results: [State!]!
 
   """Count pagination"""
   count: Float!
@@ -202,6 +281,8 @@ type Query {
   colors: [Color!]!
   colorspage(listColorInput: ListInput!): ColorPagination!
   color(_id: String!): Color!
+  users: [User!]!
+  userspage(listUserInput: ListInput!): UserPagination!
   user(_id: String!): User!
   units: [Unit!]!
   unitspage(listUnitInput: ListInput!): UnitPagination!
@@ -215,6 +296,15 @@ type Query {
   companys: [Company!]!
   companyspage(listCompanyInput: ListInput!): CompanyPagination!
   company(_id: String!): Company!
+  countrys: [Country!]!
+  countryspage(listCountryInput: ListInput!): CountryPagination!
+  country(_id: String!): Country!
+  states: [State!]!
+  statespage(listStateInput: ListInput!): StatePagination!
+  state(_id: String!): State!
+  citys: [City!]!
+  cityspage(listCityInput: ListInput!): CityPagination!
+  city(_id: String!): City!
 }
 
 input ListInput {
@@ -245,6 +335,15 @@ type Mutation {
   createCompany(data: CreateCompanyInput!): Company!
   updateCompany(data: UpdateCompanyInput!): Company!
   removeCompany(_id: String!): Company!
+  createCountry(data: CreateCountryInput!): Country!
+  updateCountry(data: UpdateCountryInput!): Country!
+  removeCountry(_id: String!): Country!
+  createState(data: CreateStateInput!): State!
+  updateState(data: UpdateStateInput!): State!
+  removeState(_id: String!): State!
+  createCity(data: CreateCityInput!): City!
+  updateCity(data: UpdateCityInput!): City!
+  removeCity(_id: String!): City!
 }
 
 input CreateColorInput {
@@ -448,6 +547,9 @@ input CreateMemberInput {
   """Active"""
   active: Boolean
 
+  """Administrador"""
+  adm: Boolean
+
   """Date register"""
   date_register: DateTime
 }
@@ -497,6 +599,93 @@ input UpdateCompanyInput {
 
   """User at this company"""
   users: [CreateMemberInput!]
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+  _id: String!
+}
+
+input CreateCountryInput {
+  """Name"""
+  name: String!
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+}
+
+input UpdateCountryInput {
+  """Name"""
+  name: String
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+  _id: String!
+}
+
+input CreateStateInput {
+  """Name"""
+  name: String!
+
+  """UF"""
+  uf: String!
+
+  """Country id"""
+  idcountry: String!
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+}
+
+input UpdateStateInput {
+  """Name"""
+  name: String
+
+  """UF"""
+  uf: String
+
+  """Country id"""
+  idcountry: String
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+  _id: String!
+}
+
+input CreateCityInput {
+  """Name"""
+  name: String!
+
+  """State id"""
+  idstate: String!
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+}
+
+input UpdateCityInput {
+  """Name"""
+  name: String
+
+  """State id"""
+  idstate: String
 
   """Active"""
   active: Boolean
