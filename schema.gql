@@ -46,6 +46,126 @@ type UserPagination {
   count: Float!
 }
 
+type Bank {
+  _id: String!
+
+  """Name"""
+  name: String!
+
+  """Codigo"""
+  code: Float!
+
+  """Active"""
+  active: Boolean!
+
+  """Date register"""
+  date_register: DateTime!
+}
+
+type BankPagination {
+  results: [Bank!]!
+
+  """Count pagination"""
+  count: Float!
+}
+
+type Account {
+  _id: String!
+
+  """Account bank id"""
+  idbank: String!
+
+  """Account agency"""
+  agency: String!
+
+  """Account number account"""
+  number_account: String!
+
+  """Account active"""
+  active: Boolean!
+
+  """Account date register"""
+  date_register: DateTime!
+}
+
+type Pix {
+  _id: String!
+
+  """Pix code"""
+  code: String!
+
+  """Pix active"""
+  active: Boolean!
+
+  """Pix date register"""
+  date_register: DateTime!
+}
+
+type Carrier {
+  _id: String!
+
+  """Name"""
+  name: String!
+
+  """Nome fantasia"""
+  nick_name: String!
+
+  """cnpj"""
+  national_identifier: String!
+
+  """inscricao estadual"""
+  state_identifier: String!
+
+  """inscricao municipal"""
+  municipal_identifier: String!
+
+  """Endereco"""
+  address: String!
+
+  """Complemento"""
+  complement: String!
+
+  """Bairro"""
+  district: String!
+
+  """Cep"""
+  zip_code: String!
+
+  """Cidade"""
+  city: String!
+
+  """Fone"""
+  phone: String!
+
+  """Celular"""
+  cellphone: String!
+
+  """Email"""
+  email: String!
+
+  """Contato"""
+  contact: String!
+
+  """account at this company"""
+  accounts: [Account!]!
+
+  """Pix at this company"""
+  pixs: [Pix!]!
+
+  """Active"""
+  active: Boolean!
+
+  """Date register"""
+  date_register: DateTime!
+}
+
+type CarrierPagination {
+  results: [Carrier!]!
+
+  """Count pagination"""
+  count: Float!
+}
+
 type Category {
   _id: String!
 
@@ -305,6 +425,12 @@ type Query {
   cities: [City!]!
   citiespage(listCityInput: ListInput!): CityPagination!
   city(_id: String!): City!
+  banks: [Bank!]!
+  bankspage(listBankInput: ListInput!): BankPagination!
+  bank(_id: String!): Bank!
+  carriers: [Carrier!]!
+  carrierspage(listCarrierInput: ListInput!): CarrierPagination!
+  carrier(_id: String!): Carrier!
 }
 
 input ListInput {
@@ -344,6 +470,12 @@ type Mutation {
   createCity(data: CreateCityInput!): City!
   updateCity(data: UpdateCityInput!): City!
   removeCity(_id: String!): City!
+  createBank(data: CreateBankInput!): Bank!
+  updateBank(data: UpdateBankInput!): Bank!
+  removeBank(_id: String!): Bank!
+  createCarrier(data: CreateCarrierInput!): Carrier!
+  updateCarrier(data: UpdateCarrierInput!): Carrier!
+  removeCarrier(_id: String!): Carrier!
 }
 
 input CreateColorInput {
@@ -686,6 +818,176 @@ input UpdateCityInput {
 
   """State id"""
   idstate: String
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+  _id: String!
+}
+
+input CreateBankInput {
+  """Name"""
+  name: String!
+
+  """Codigo"""
+  code: Float!
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+}
+
+input UpdateBankInput {
+  """Name"""
+  name: String
+
+  """Codigo"""
+  code: Float
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+  _id: String!
+}
+
+input CreateCarrierInput {
+  """Name"""
+  name: String!
+
+  """Nick Name"""
+  nick_name: String
+
+  """CNPJ"""
+  national_identifier: String
+
+  """Inscricao estadual"""
+  state_identifier: String
+
+  """Inscricao municipal"""
+  municipal_identifier: String
+
+  """Endereco"""
+  address: String
+
+  """Complemento"""
+  complement: String
+
+  """Bairro"""
+  district: String
+
+  """CEP"""
+  zip_code: String
+
+  """Cidade"""
+  city: String
+
+  """Phone"""
+  phone: String
+
+  """Celular"""
+  cellphone: String
+
+  """Email"""
+  email: String
+
+  """Contato"""
+  contact: String
+
+  """Accounts this company"""
+  accounts: [CreateAccountInput!]
+
+  """Pixs this company"""
+  pixs: [CreatePixInput!]
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+}
+
+input CreateAccountInput {
+  """Bank id"""
+  idbank: String!
+
+  """Agencia"""
+  agency: String!
+
+  """Conta corrente"""
+  number_account: String!
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+}
+
+input CreatePixInput {
+  """Code pix"""
+  code: String!
+
+  """Active"""
+  active: Boolean
+
+  """Date register"""
+  date_register: DateTime
+}
+
+input UpdateCarrierInput {
+  """Name"""
+  name: String
+
+  """Nick Name"""
+  nick_name: String
+
+  """CNPJ"""
+  national_identifier: String
+
+  """Inscricao estadual"""
+  state_identifier: String
+
+  """Inscricao municipal"""
+  municipal_identifier: String
+
+  """Endereco"""
+  address: String
+
+  """Complemento"""
+  complement: String
+
+  """Bairro"""
+  district: String
+
+  """CEP"""
+  zip_code: String
+
+  """Cidade"""
+  city: String
+
+  """Phone"""
+  phone: String
+
+  """Celular"""
+  cellphone: String
+
+  """Email"""
+  email: String
+
+  """Contato"""
+  contact: String
+
+  """Accounts this company"""
+  accounts: [CreateAccountInput!]
+
+  """Pixs this company"""
+  pixs: [CreatePixInput!]
 
   """Active"""
   active: Boolean

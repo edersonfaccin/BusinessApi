@@ -6,6 +6,8 @@ import { AppController } from './app.controller';
 import { AppResolver } from './app.resolver';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { BankModule } from './bank/bank.module';
+import { CarrierModule } from './carrier/carrier.module';
 import { CategoryModule } from './category/category.module';
 import { CityModule } from './city/city.module';
 import { ColorModule } from './color/color.module';
@@ -34,7 +36,9 @@ require('dotenv').config()
     CompanyModule,
     CountryModule,
     StateModule,
-    CityModule
+    CityModule,
+    BankModule,
+    CarrierModule
   ],
   controllers: [
     AppController
