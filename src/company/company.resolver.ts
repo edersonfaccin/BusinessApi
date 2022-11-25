@@ -19,13 +19,13 @@ export class CompanyResolver {
     }
 
     @UseGuards(GqlAuthGuard)
-    @Query(() => [Company], { name: 'companys' })
+    @Query(() => [Company], { name: 'companies' })
     findAllReport() {
         return this.service.getAllReport()
     }
 
     @UseGuards(GqlAuthGuard)
-    @Query(() => CompanyPagination, { name: 'companyspage' })
+    @Query(() => CompanyPagination, { name: 'companiespage' })
     findAllPage(@Args('listCompanyInput') listCompanyInput: ListInput) {
         return this.service.getAllPage(listCompanyInput)
     }

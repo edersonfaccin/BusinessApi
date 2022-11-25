@@ -19,13 +19,13 @@ export class CountryResolver {
     }
 
     @UseGuards(GqlAuthGuard)
-    @Query(() => [Country], { name: 'countrys' })
+    @Query(() => [Country], { name: 'countries' })
     findAllReport() {
         return this.service.getAllReport()
     }
 
     @UseGuards(GqlAuthGuard)
-    @Query(() => CountryPagination, { name: 'countryspage' })
+    @Query(() => CountryPagination, { name: 'countriespage' })
     findAllPage(@Args('listCountryInput') listCountryInput: ListInput) {
         return this.service.getAllPage(listCountryInput)
     }

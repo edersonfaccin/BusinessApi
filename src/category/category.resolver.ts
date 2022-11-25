@@ -19,13 +19,13 @@ export class CategoryResolver {
     }
 
     @UseGuards(GqlAuthGuard)
-    @Query(() => [Category], { name: 'categorys' })
+    @Query(() => [Category], { name: 'categories' })
     findAllReport() {
         return this.service.getAllReport()
     }
 
     @UseGuards(GqlAuthGuard)
-    @Query(() => CategoryPagination, { name: 'categoryspage' })
+    @Query(() => CategoryPagination, { name: 'categoriespage' })
     findAllPage(@Args('listCategoryInput') listCategoryInput: ListInput) {
         return this.service.getAllPage(listCategoryInput)
     }

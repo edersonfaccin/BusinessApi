@@ -19,13 +19,13 @@ export class CityResolver {
     }
 
     @UseGuards(GqlAuthGuard)
-    @Query(() => [City], { name: 'citys' })
+    @Query(() => [City], { name: 'cities' })
     findAllReport() {
         return this.service.getAllReport()
     }
 
     @UseGuards(GqlAuthGuard)
-    @Query(() => CityPagination, { name: 'cityspage' })
+    @Query(() => CityPagination, { name: 'citiespage' })
     findAllPage(@Args('listCityInput') listCityInput: ListInput) {
         return this.service.getAllPage(listCityInput)
     }

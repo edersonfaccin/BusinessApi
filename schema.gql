@@ -290,20 +290,20 @@ type Query {
   groups: [Group!]!
   groupspage(listGroupInput: ListInput!): GroupPagination!
   group(_id: String!): Group!
-  categorys: [Category!]!
-  categoryspage(listCategoryInput: ListInput!): CategoryPagination!
+  categories: [Category!]!
+  categoriespage(listCategoryInput: ListInput!): CategoryPagination!
   category(_id: String!): Category!
-  companys: [Company!]!
-  companyspage(listCompanyInput: ListInput!): CompanyPagination!
+  companies: [Company!]!
+  companiespage(listCompanyInput: ListInput!): CompanyPagination!
   company(_id: String!): Company!
-  countrys: [Country!]!
-  countryspage(listCountryInput: ListInput!): CountryPagination!
+  countries: [Country!]!
+  countriespage(listCountryInput: ListInput!): CountryPagination!
   country(_id: String!): Country!
   states: [State!]!
   statespage(listStateInput: ListInput!): StatePagination!
   state(_id: String!): State!
-  citys: [City!]!
-  cityspage(listCityInput: ListInput!): CityPagination!
+  cities: [City!]!
+  citiespage(listCityInput: ListInput!): CityPagination!
   city(_id: String!): City!
 }
 
