@@ -71,3 +71,10 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+## TODO
+after clone, you have to create .env file with attributes below
+
+DATABASE_URL=YOUR MONGO URL DATABASE
+JWT_SECRET=SECRET KEY FOR JWT SECRET
